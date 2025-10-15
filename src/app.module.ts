@@ -9,9 +9,11 @@ import { AudiosModule } from './audios/audios.module';
 import { QuotesModule } from './quotes/quotes.module';
 import { VisualsModule } from './visuals/visuals.module';
 import { FeaturedsModule } from './featureds/featureds.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [UsersRoleModule,
+    ConfigModule.forRoot({isGlobal:true,envFilePath:'.env'}),
     TypeOrmModule.forRoot({
       type: 'mssql',
       host:  process.env.DB_HOST,
